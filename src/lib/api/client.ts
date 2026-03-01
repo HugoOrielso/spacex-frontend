@@ -1,5 +1,5 @@
 import axios from "axios";
-
+// Types
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || "http://spacex-backend-alb-574561858.us-east-2.elb.amazonaws.com",
   timeout: 10000,
