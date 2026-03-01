@@ -1,6 +1,7 @@
 // components/TotalLaunchesByYearChart.tsx
 "use client";
 
+import { useLaunchesStore } from "@/store/useLaunches";
 import React from "react";
 import {
   ResponsiveContainer,
@@ -13,12 +14,11 @@ import {
   Bar,
 } from "recharts";
 
-interface Props {
-  data: YearStat[];
-  loading: boolean;
-}
+const TotalLaunchesByYearChart: React.FC = () => {
+  // Leer del store
+  const data = useLaunchesStore((state) => state.byYear);
+  const loading = useLaunchesStore((state) => state.loadingYear);
 
-const TotalLaunchesByYearChart: React.FC<Props> = ({ data, loading }) => {
   return (
     <div className="flex flex-col gap-3 rounded-2xl border border-slate-700/70 bg-slate-900/80 p-4 shadow-xl">
       <div>
@@ -29,6 +29,7 @@ const TotalLaunchesByYearChart: React.FC<Props> = ({ data, loading }) => {
           Year-over-year growth of launches.
         </p>
       </div>
+
       <div className="h-72">
         {loading ? (
           <div className="flex h-full items-center justify-center text-sm text-slate-400">

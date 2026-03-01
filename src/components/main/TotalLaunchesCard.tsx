@@ -1,13 +1,13 @@
 "use client";
 
+import { useLaunchesStore } from "@/store/useLaunches";
 import React from "react";
 
-interface Props {
-  summary: Summary | null;
-  loading: boolean;
-}
+const TotalLaunchesCard: React.FC = () => {
+  // Leemos lo que antes venía por props
+  const summary = useLaunchesStore((state) => state.globalSummary);
+  const loading = useLaunchesStore((state) => state.loadingSummary);
 
-const TotalLaunchesCard: React.FC<Props> = ({ summary, loading }) => {
   const total = summary?.total ?? 0;
 
   return (

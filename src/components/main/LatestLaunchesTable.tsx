@@ -10,13 +10,13 @@ import {
   statusLabel,
   statusPillClasses,
 } from "@/lib/ui-helper";
+import { useLaunchesStore } from "@/store/useLaunches";
 
-interface Props {
-  launches: Launch[];
-  loading: boolean;
-}
+const LatestLaunchesTable: React.FC = () => {
+  // 👇 Antes venían por props, ahora del store
+  const launches = useLaunchesStore((state) => state.latestLaunches);
+  const loading = useLaunchesStore((state) => state.loadingLatest);
 
-const LatestLaunchesTable: React.FC<Props> = ({ launches, loading }) => {
   const [selected, setSelected] = useState<Launch | null>(null);
 
   return (
@@ -179,15 +179,15 @@ const LatestLaunchesTable: React.FC<Props> = ({ launches, loading }) => {
                   {selected.upcoming == null
                     ? "Unknown"
                     : selected.upcoming
-                    ? "Yes"
-                    : "No"}
+                      ? "Yes"
+                      : "No"}
                 </InfoBadge>
                 <InfoBadge label="Success">
                   {selected.success == null
                     ? "Unknown"
                     : selected.success
-                    ? "Yes"
-                    : "No"}
+                      ? "Yes"
+                      : "No"}
                 </InfoBadge>
               </div>
 

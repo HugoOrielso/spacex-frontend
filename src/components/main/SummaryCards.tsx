@@ -1,13 +1,13 @@
 "use client";
 
+import { useLaunchesStore } from "@/store/useLaunches";
 import React, { useMemo } from "react";
 
-interface Props {
-  summary: Summary | null;
-  loading: boolean;
-}
+const SummaryCards: React.FC = () => {
+  // Leemos del store en vez de recibir props
+  const summary = useLaunchesStore((state) => state.globalSummary);
+  const loading = useLaunchesStore((state) => state.loadingSummary);
 
-const SummaryCards: React.FC<Props> = ({ summary, loading }) => {
   const items = useMemo(
     () => [
       {

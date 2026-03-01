@@ -2,6 +2,7 @@
 // components/StatusBreakdownDonut.tsx
 "use client";
 
+import { useLaunchesStore } from "@/store/useLaunches";
 import React, { useMemo } from "react";
 import {
   ResponsiveContainer,
@@ -11,11 +12,6 @@ import {
   Tooltip,
 } from "recharts";
 
-interface Props {
-  summary: Summary | null;
-  loading: boolean;
-}
-
 const COLORS = {
   success: "#22c55e",
   failed: "#f97373",
@@ -23,16 +19,40 @@ const COLORS = {
   unknown: "#9ca3af",
 };
 
-const StatusBreakdownDonut: React.FC<Props> = ({ summary, loading }) => {
+const StatusBreakdownDonut: React.FC = () => {
+  // 👇 Antes venían por props
+  const summary = useLaunchesStore((state) => state.globalSummary);
+  const loading = useLaunchesStore((state) => state.loadingSummary);
+
   const total = summary?.total ?? 0;
 
   const data = useMemo(() => {
     if (!summary || total === 0) return [];
     return [
-      { name: "Success", key: "success", value: summary.success, color: COLORS.success },
-      { name: "Failed", key: "failed", value: summary.failed, color: COLORS.failed },
-      { name: "Upcoming", key: "upcoming", value: summary.upcoming, color: COLORS.upcoming },
-      { name: "Unknown", key: "unknown", value: summary.unknown, color: COLORS.unknown },
+      {
+        name: "Success",
+        key: "success",
+        value: summary.success,
+        color: COLORS.success,
+      },
+      {
+        name: "Failed",
+        key: "failed",
+        value: summary.failed,
+        color: COLORS.failed,
+      },
+      {
+        name: "Upcoming",
+        key: "upcoming",
+        value: summary.upcoming,
+        color: COLORS.upcoming,
+      },
+      {
+        name: "Unknown",
+        key: "unknown",
+        value: summary.unknown,
+        color: COLORS.unknown,
+      },
     ].filter((d) => d.value > 0);
   }, [summary, total]);
 
@@ -62,6 +82,7 @@ const StatusBreakdownDonut: React.FC<Props> = ({ summary, loading }) => {
                     innerRadius="60%"
                     outerRadius="80%"
                     paddingAngle={2}
+                    color="white"
                   >
                     {data.map((entry) => (
                       <Cell key={entry.key} fill={entry.color} />
@@ -78,7 +99,10 @@ const StatusBreakdownDonut: React.FC<Props> = ({ summary, loading }) => {
                       borderRadius: 12,
                       border: "1px solid #1f2937",
                       fontSize: 12,
+                      color: "#fff",
                     }}
+                    itemStyle={{ color: "#ffffff" }}  
+                    labelStyle={{ color: "#ffffff" }}
                   />
                 </PieChart>
               </ResponsiveContainer>
