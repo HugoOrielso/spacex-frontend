@@ -7,13 +7,7 @@ const PAGE_SIZE = 50;
 
 type LaunchesStatus = LaunchFilters["status"] | "all";
 
-type LaunchesStats = {
-  total: number;
-  success: number;
-  failed: number;
-  upcoming: number;
-  unknown: number;
-};
+
 
 interface LaunchesState {
   launches: Launch[];

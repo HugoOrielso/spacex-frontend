@@ -15,7 +15,6 @@ import {
 } from "recharts";
 
 const TotalLaunchesByYearChart: React.FC = () => {
-  // Leer del store
   const data = useLaunchesStore((state) => state.byYear);
   const loading = useLaunchesStore((state) => state.loadingYear);
 

@@ -18,7 +18,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           
           {/* Icon */}
-          <div className="rounded-lg bg-linear-to-br from-sky-500 to-indigo-500 p-2 flex items-center justify-center">
+          <div className="rounded-lg bg-linear-to-br hidden from-sky-500 to-indigo-500 p-2 md:flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

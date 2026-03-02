@@ -87,7 +87,7 @@ export function LaunchesFilters() {
                 <div className="flex items-center justify-center gap-2">
 
                     <div className="flex-col gap-1 md:hidden">
-                        <label className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                        <label className="text-xs hidden font-semibold uppercase tracking-wide text-slate-400">
                             Search
                         </label>
                         <input
@@ -98,7 +98,7 @@ export function LaunchesFilters() {
                             className="h-10 rounded-xl border border-slate-700 bg-slate-950/80 px-3 text-sm text-slate-100 shadow-sm outline-none ring-sky-500/40 focus:border-sky-400 focus:ring-2"
                         />
                     </div>
-                    <div className="flex items-end justify-center h-full min-h-16">
+                    <div className="flex items-end justify-center h-full ">
 
                         <button
                             type="button"

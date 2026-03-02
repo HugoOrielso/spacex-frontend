@@ -40,3 +40,11 @@ interface LaunchFilters {
   limit?: number;
   offset?: number;
 }
+
+interface LaunchesStats {
+  total: number;
+  success: number;
+  failed: number;
+  upcoming: number;
+  unknown: number;
+};

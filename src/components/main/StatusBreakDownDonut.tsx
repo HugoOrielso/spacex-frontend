@@ -101,7 +101,7 @@ const StatusBreakdownDonut: React.FC = () => {
                       fontSize: 12,
                       color: "#fff",
                     }}
-                    itemStyle={{ color: "#ffffff" }}  
+                    itemStyle={{ color: "#ffffff" }}
                     labelStyle={{ color: "#ffffff" }}
                   />
                 </PieChart>
@@ -110,19 +110,20 @@ const StatusBreakdownDonut: React.FC = () => {
 
             <div className="flex flex-col gap-2 text-xs">
               {data.map((d) => {
-                const pct = ((d.value / total) * 100).toFixed(1);
                 return (
                   <div key={d.key} className="flex items-center gap-2">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
                       style={{ backgroundColor: d.color }}
                     />
-                    <span className="font-medium text-slate-100">
-                      {d.name}
-                    </span>
-                    <span className="text-slate-400">
-                      {d.value} · {pct}%
-                    </span>
+                    <div className="flex flex-col">
+                      <span className="font-medium text-slate-100">
+                        {d.name}
+                      </span>
+                      <span className="text-slate-400">
+                        {d.value} 
+                      </span>
+                    </div>
                   </div>
                 );
               })}
