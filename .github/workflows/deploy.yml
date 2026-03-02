@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Correr tests
-        run: pnpm test --passWithNoTests
+        run: pnpm test -- --passWithNoTests
 
   deploy:
     name: Build & Deploy
